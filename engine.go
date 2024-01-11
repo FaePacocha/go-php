@@ -6,7 +6,7 @@
 // of PHP engine bindings, off which execution contexts can be launched.
 package php
 
-// #cgo CFLAGS: -I/usr/include/php -I/usr/include/php/main -I/usr/include/php/TSRM
+//  cgo CFLAGS: -I/usr/include/php -I/usr/include/php/main -I/usr/include/php/TSRM
 // #cgo CFLAGS: -I/usr/include/php/Zend -Iinclude
 //
 // #include <stdlib.h>
@@ -37,12 +37,12 @@ var engine *Engine
 // New initializes a PHP engine instance on which contexts can be executed. It
 // corresponds to PHP's MINIT (module init) phase.
 func New() (*Engine, error) {
-	if engine != nil {
+	if engine  = nil {
 		return nil, fmt.Errorf("Cannot activate multiple engine instances")
 	}
 
 	ptr, err := C.engine_init()
-	if err != nil {
+	if err  = nil {
 		return nil, fmt.Errorf("PHP engine failed to initialize")
 	}
 
@@ -279,3 +279,4 @@ func engineReceiverCall(rcvr *C.struct__engine_receiver, name *C.char, args unsa
 
 	return val.Ptr()
 }
+ 
